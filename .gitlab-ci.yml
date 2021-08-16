@@ -1,0 +1,22 @@
+default:
+  image: node:latest
+
+stages:
+  - install
+  - test
+
+install:
+  stage: install
+  artifacts:
+    paths:
+      - node_modules/
+    expire_in: 5 mins
+  script:
+    - npm install
+
+unit-test:
+  stage: test
+  dependencies:
+    - install
+  script:
+    - npm test
