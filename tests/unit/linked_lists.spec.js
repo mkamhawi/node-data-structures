@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const LinkedList = require('../../datastructures/linkedlist');
+const LinkedList = require('../../src/datastructures/linkedlist');
 
 describe('Linked Lists', () => {
   context('Doubly linked lists', () => {

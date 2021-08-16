@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const BinarySearchTree = require('../../datastructures/bst');
+const BinarySearchTree = require('../../src/datastructures/bst');
 
 describe('Binary Search Trees', () => {
   context('Node insertion order', () => {
