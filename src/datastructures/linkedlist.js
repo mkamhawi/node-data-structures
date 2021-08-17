@@ -7,6 +7,7 @@ module.exports = class LinkedList {
   }
 
   pushToHead(value) {
+    if (!value) return;
     const node = new ListNode(value);
     if (!this.head) {
       this.head = node;
@@ -24,7 +25,7 @@ module.exports = class LinkedList {
       return oldHead;
     }
     this.head = this.head.getNextNode();
-    this.head.setPreviousNode(null);
+    if (this.head) this.head.setPreviousNode(null);
     return oldHead;
   }
 
@@ -33,6 +34,7 @@ module.exports = class LinkedList {
   }
 
   pushToTail(value) {
+    if (!value) return;
     const node = new ListNode(value);
     if (!this.head) {
       this.head = node;
@@ -48,7 +50,7 @@ module.exports = class LinkedList {
     const oldTail = this.tail;
     if (!oldTail) return oldTail;
     this.tail = this.tail.getPreviousNode();
-    this.tail.setNextNode(null);
+    if (this.tail) this.tail.setNextNode(null);
     return oldTail;
   }
 
