@@ -1,14 +1,18 @@
 const ListNode = require('./listnode');
 
 module.exports = class LinkedList {
-  constructor(value) {
-    const node = new ListNode(value);
-    this.head = node;
-    this.tail = node;
+  constructor() {
+    this.head = null;
+    this.tail = null;
   }
 
   pushToHead(value) {
     const node = new ListNode(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+      return;
+    }
     node.setNextNode(this.head);
     this.head.setPreviousNode(node);
     this.head = node;
@@ -16,6 +20,9 @@ module.exports = class LinkedList {
 
   pullFromHead() {
     const oldHead = this.head;
+    if (!this.head) {
+      return oldHead;
+    }
     this.head = this.head.getNextNode();
     this.head.setPreviousNode(null);
     return oldHead;
@@ -27,6 +34,11 @@ module.exports = class LinkedList {
 
   pushToTail(value) {
     const node = new ListNode(value);
+    if (!this.head) {
+      this.head = node;
+      this.tail = node;
+      return;
+    }
     this.tail.setNextNode(node);
     node.setPreviousNode(this.tail);
     this.tail = this.tail.getNextNode();
@@ -34,6 +46,7 @@ module.exports = class LinkedList {
 
   pullFromTail() {
     const oldTail = this.tail;
+    if (!oldTail) return oldTail;
     this.tail = this.tail.getPreviousNode();
     this.tail.setNextNode(null);
     return oldTail;

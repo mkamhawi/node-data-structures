@@ -4,7 +4,8 @@ const LinkedList = require('../../src/datastructures/linkedlist');
 describe('Linked Lists', () => {
   context('Doubly linked lists', () => {
     it('Should push to head of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToHead(22);
       list.pushToHead(33);
 
       expect(list.head.getValue()).to.be.eql(33);
@@ -12,7 +13,8 @@ describe('Linked Lists', () => {
     });
 
     it('Should push to tail of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToHead(22);
       list.pushToTail(33);
       list.pushToTail(34);
 
@@ -23,7 +25,8 @@ describe('Linked Lists', () => {
     });
 
     it('Should delete from the head of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToTail(22);
       list.pushToTail(33);
       list.pushToTail(34);
 
@@ -35,7 +38,8 @@ describe('Linked Lists', () => {
     });
 
     it('Should pull from the head of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToTail(22);
       list.pushToTail(33);
       list.pushToTail(34);
 
@@ -46,7 +50,8 @@ describe('Linked Lists', () => {
     });
 
     it('Should delete from the tail of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToTail(22);
       list.pushToTail(33);
       list.pushToTail(34);
 
@@ -58,7 +63,8 @@ describe('Linked Lists', () => {
     });
 
     it('Should pull from the tail of the list successfully', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToTail(22);
       list.pushToTail(33);
       list.pushToTail(34);
 
@@ -69,11 +75,30 @@ describe('Linked Lists', () => {
     });
 
     it('Should return expected textual representation', () => {
-      const list = new LinkedList(22);
+      const list = new LinkedList();
+      list.pushToHead(22);
       list.pushToHead(33);
       list.pushToTail(11);
 
       expect(list.getTextualRepresentation()).to.be.eql('(33, 22, 11)');
+    });
+
+    it('Should return expected textual representation for an empty list', () => {
+      const list = new LinkedList();
+
+      expect(list.getTextualRepresentation()).to.be.eql('()');
+    });
+
+    it('Should pull null from tail of an empty list', () => {
+      const list = new LinkedList();
+
+      expect(list.pullFromTail()).to.be.eql(null);
+    });
+
+    it('Should pull null from head of an empty list', () => {
+      const list = new LinkedList();
+
+      expect(list.pullFromHead()).to.be.eql(null);
     });
   });
 });
