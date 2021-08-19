@@ -13,7 +13,7 @@ module.exports = class Heap {
     if (this.isEmpty()) return undefined;
     const root = this.heap.shift();
     const lastLeaf = this.heap.pop();
-    if (lastLeaf) {
+    if (lastLeaf !== undefined) {
       this.heap.splice(0, 0, lastLeaf);
       this.balanceParentPlacement(0);
     }

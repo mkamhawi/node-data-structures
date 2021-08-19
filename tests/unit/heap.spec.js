@@ -31,7 +31,7 @@ describe('Heap tests', () => {
   });
 
   context('Pulling heap root', () => {
-    it.only('Should rebalance heap correctly after pulling root', () => {
+    it('Should rebalance heap correctly after pulling root', () => {
       const heap = new Heap();
       heap.pushToHeap(33);
       heap.pushToHeap(30);

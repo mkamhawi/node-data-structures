@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const BubbleSort = require('../../src/sorting/bubble');
+const HeapSort = require('../../src/sorting/heap');
 const InsertionSort = require('../../src/sorting/insertion');
 const MergeSort = require('../../src/sorting/merge');
 const QuickSort = require('../../src/sorting/quick');
@@ -126,6 +127,29 @@ describe('Sorting tests', () => {
       const quickSort = new QuickSort(aItems);
       quickSort.sort();
       const output = quickSort.getItems();
+      expect(output).to.be.eql(aExpectedOutput);
+    });
+  });
+
+  context('Heap sort', () => {
+    it('Should sort the items correctly', () => {
+      const heapSort = new HeapSort(items);
+      heapSort.sort();
+      const output = heapSort.getItems();
+      expect(output).to.be.eql(expectedOutput);
+    });
+
+    it('Should sort the descending ordered items correctly', () => {
+      const heapSort = new HeapSort(dItems);
+      heapSort.sort();
+      const output = heapSort.getItems();
+      expect(output).to.be.eql(dExpectedOutput);
+    });
+
+    it('Should not change the ascending ordered items', () => {
+      const heapSort = new HeapSort(aItems);
+      heapSort.sort();
+      const output = heapSort.getItems();
       expect(output).to.be.eql(aExpectedOutput);
     });
   });
