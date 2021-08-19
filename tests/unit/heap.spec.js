@@ -31,7 +31,7 @@ describe('Heap tests', () => {
   });
 
   context('Pulling heap root', () => {
-    it('Should rebalance heap correctly after pulling root', () => {
+    it.only('Should rebalance heap correctly after pulling root', () => {
       const heap = new Heap();
       heap.pushToHeap(33);
       heap.pushToHeap(30);
@@ -52,6 +52,15 @@ describe('Heap tests', () => {
       root = heap.pullHeapRoot();
       expect(root).to.be.eql(30);
       expect(heap.getHeap()).to.eql([22, 11]);
+      root = heap.pullHeapRoot();
+      expect(root).to.be.eql(22);
+      expect(heap.getHeap()).to.eql([11]);
+      root = heap.pullHeapRoot();
+      expect(root).to.be.eql(11);
+      expect(heap.getHeap()).to.eql([]);
+      root = heap.pullHeapRoot();
+      expect(root).to.be.eql(undefined);
+      expect(heap.getHeap()).to.eql([]);
     });
   });
 });

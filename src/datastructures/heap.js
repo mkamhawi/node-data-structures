@@ -10,10 +10,13 @@ module.exports = class Heap {
   }
 
   pullHeapRoot() {
+    if (this.isEmpty()) return undefined;
     const root = this.heap.shift();
     const lastLeaf = this.heap.pop();
-    this.heap.splice(0, 0, lastLeaf);
-    this.balanceParentPlacement(0);
+    if (lastLeaf) {
+      this.heap.splice(0, 0, lastLeaf);
+      this.balanceParentPlacement(0);
+    }
     return root;
   }
 
@@ -53,8 +56,8 @@ module.exports = class Heap {
     this.heap[j] = tmp;
   }
 
-  getHeapSize() {
-    return this.heap.length;
+  isEmpty() {
+    return this.heap.length === 0;
   }
 
   getHeap() {
