@@ -2,8 +2,8 @@ const SortBase = require('./base');
 const Heap = require('../datastructures/heap');
 
 module.exports = class HeapSort extends SortBase {
-  constructor(items) {
-    super(items);
+  constructor() {
+    super();
     this.heap = new Heap();
   }
 

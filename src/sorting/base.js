@@ -1,5 +1,9 @@
 module.exports = class SortBase {
-  constructor(items) {
+  constructor() {
+    this.items = [];
+  }
+
+  setItems(items) {
     this.items = items;
   }
 

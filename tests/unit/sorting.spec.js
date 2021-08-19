@@ -15,142 +15,95 @@ const dExpectedOutput = [-3, -1, 0, 1, 3, 5, 8, 9, 10, 11];
 const aItems = [-44, -37, -33, -22, -11, 0, 11, 22, 33, 37, 44];
 const aExpectedOutput = [-44, -37, -33, -22, -11, 0, 11, 22, 33, 37, 44];
 
+const runSortingTest = (sortingObject, array, expectedArray) => {
+  sortingObject.setItems(array);
+  sortingObject.sort();
+  const output = sortingObject.getItems();
+  expect(output).to.be.eql(expectedArray);
+};
+
 describe('Sorting tests', () => {
   context('Bubble sort', () => {
     it('Should sort the items correctly', () => {
-      const bubbleSort = new BubbleSort(items);
-      bubbleSort.sort();
-      const output = bubbleSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new BubbleSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const bubbleSort = new BubbleSort(dItems);
-      bubbleSort.sort();
-      const output = bubbleSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new BubbleSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const bubbleSort = new BubbleSort(aItems);
-      bubbleSort.sort();
-      const output = bubbleSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new BubbleSort(), aItems, aExpectedOutput);
     });
   });
 
   context('Insertion sort', () => {
     it('Should sort the items correctly', () => {
-      const insertionSort = new InsertionSort(items);
-      insertionSort.sort();
-      const output = insertionSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new InsertionSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const insertionSort = new InsertionSort(dItems);
-      insertionSort.sort();
-      const output = insertionSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new InsertionSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const insertionSort = new InsertionSort(aItems);
-      insertionSort.sort();
-      const output = insertionSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new InsertionSort(), aItems, aExpectedOutput);
     });
   });
 
   context('Selection sort', () => {
     it('Should sort the items correctly', () => {
-      const selectionSort = new SelectionSort(items);
-      selectionSort.sort();
-      const output = selectionSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new SelectionSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const selectionSort = new SelectionSort(dItems);
-      selectionSort.sort();
-      const output = selectionSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new SelectionSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const selectionSort = new SelectionSort(aItems);
-      selectionSort.sort();
-      const output = selectionSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new SelectionSort(), aItems, aExpectedOutput);
     });
   });
 
   context('Merge sort', () => {
     it('Should sort the items correctly', () => {
-      const mergeSort = new MergeSort(items);
-      mergeSort.sort();
-      const output = mergeSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new MergeSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const mergeSort = new MergeSort(dItems);
-      mergeSort.sort();
-      const output = mergeSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new MergeSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const mergeSort = new MergeSort(aItems);
-      mergeSort.sort();
-      const output = mergeSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new MergeSort(), aItems, aExpectedOutput);
     });
   });
 
   context('Quick sort', () => {
     it('Should sort the items correctly', () => {
-      const quickSort = new QuickSort(items);
-      quickSort.sort();
-      const output = quickSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new QuickSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const quickSort = new QuickSort(dItems);
-      quickSort.sort();
-      const output = quickSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new QuickSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const quickSort = new QuickSort(aItems);
-      quickSort.sort();
-      const output = quickSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new QuickSort(), aItems, aExpectedOutput);
     });
   });
 
   context('Heap sort', () => {
     it('Should sort the items correctly', () => {
-      const heapSort = new HeapSort(items);
-      heapSort.sort();
-      const output = heapSort.getItems();
-      expect(output).to.be.eql(expectedOutput);
+      runSortingTest(new HeapSort(), items, expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      const heapSort = new HeapSort(dItems);
-      heapSort.sort();
-      const output = heapSort.getItems();
-      expect(output).to.be.eql(dExpectedOutput);
+      runSortingTest(new HeapSort(), dItems, dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      const heapSort = new HeapSort(aItems);
-      heapSort.sort();
-      const output = heapSort.getItems();
-      expect(output).to.be.eql(aExpectedOutput);
+      runSortingTest(new HeapSort(), aItems, aExpectedOutput);
     });
   });
 });
