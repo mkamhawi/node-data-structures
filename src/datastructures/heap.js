@@ -25,27 +25,21 @@ module.exports = class Heap {
     const rightChildIndex = 2 * parentIndex + 2;
     if (this.heap.length <= leftChildIndex) return;
     const rightChildExist = this.heap.length > rightChildIndex;
-    if (
-      this.heap[parentIndex] < this.heap[leftChildIndex]
-      || (rightChildExist && this.heap[parentIndex] < this.heap[rightChildIndex])
-    ) {
-      let swapTargetIndex;
-      if (!rightChildExist) swapTargetIndex = leftChildIndex;
-      else {
-        swapTargetIndex = this.heap[leftChildIndex] > this.heap[rightChildIndex]
-          ? leftChildIndex
-          : rightChildIndex;
-      }
-      this.swapItems(parentIndex, swapTargetIndex);
-      await this.balanceParentPlacement(swapTargetIndex);
-    }
+    const targetChildIndex = rightChildExist
+    && this.heap[rightChildIndex] > this.heap[leftChildIndex]
+      ? rightChildIndex
+      : leftChildIndex;
+    if (this.heap[parentIndex] > this.heap[targetChildIndex]) return;
+    this.balanceChildPlacement(targetChildIndex);
+    this.balanceParentPlacement(targetChildIndex);
   }
 
-  async balanceChildPlacement(childIndex) {
-    const isLeftChild = childIndex % 2 === 1;
-    const parentIndex = (childIndex - (isLeftChild ? 1 : 2)) / 2;
-    if (this.heap[parentIndex] < this.heap[childIndex]) {
-      this.swapItems(childIndex, parentIndex);
+  async balanceChildPlacement(currentIndex) {
+    const isLeftChild = currentIndex % 2 === 1;
+    const parentIndex = (currentIndex - (isLeftChild ? 1 : 2)) / 2;
+    if (parentIndex < 0) return;
+    if (this.heap[parentIndex] < this.heap[currentIndex]) {
+      this.swapItems(currentIndex, parentIndex);
       await this.balanceChildPlacement(parentIndex);
     }
   }
