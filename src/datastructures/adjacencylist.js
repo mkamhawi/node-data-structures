@@ -1,40 +1,40 @@
 module.exports = class AdjacencyList {
   constructor(isDirectedGraph = false) {
-    this.adjacencyList = {};
+    this.adjacencyList = new Map();
     this.isDirectedGraph = isDirectedGraph;
   }
 
   assertVertexExists(vertex) {
-    if (this.adjacencyList[vertex] === undefined) {
+    if (!this.adjacencyList.has(vertex)) {
       throw new Error(`Vertex ${vertex} does not exist!`);
     }
   }
 
   assertVertexDoesNotExists(vertex) {
-    if (this.adjacencyList[vertex] !== undefined) {
+    if (this.adjacencyList.has(vertex)) {
       throw new Error(`Vertex ${vertex} already exists!`);
     }
   }
 
   addVertex(vertex) {
     this.assertVertexDoesNotExists(vertex);
-    this.adjacencyList[vertex] = [];
+    this.adjacencyList.set(vertex, []);
   }
 
   connectVertices(source, destination, weight) {
     this.assertVertexExists(source);
     this.assertVertexExists(destination);
-    this.adjacencyList[source].push([destination, weight]);
+    this.adjacencyList.get(source).push([destination, weight]);
     if (!this.isDirectedGraph) {
-      this.adjacencyList[destination].push([source, weight]);
+      this.adjacencyList.get(destination).push([source, weight]);
     }
   }
 
   getVertices() {
-    return Object.keys(this.adjacencyList);
+    return Array.from(this.adjacencyList.keys());
   }
 
   getAdjacentVertices(vertex) {
-    return this.adjacencyList[vertex];
+    return this.adjacencyList.get(vertex);
   }
 };
