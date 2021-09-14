@@ -31,10 +31,11 @@ module.exports = class AdjacencyList {
   }
 
   getVertices() {
-    return Array.from(this.adjacencyList.keys());
+    return [...this.adjacencyList.keys()];
   }
 
-  getAdjacentVertices(vertex) {
+  getConnectedVertices(vertex) {
+    this.assertVertexExists(vertex);
     return this.adjacencyList.get(vertex);
   }
 };

@@ -19,4 +19,5 @@ unit-test:
   dependencies:
     - install
   script:
+    - npm run lint
     - npm test
