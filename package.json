@@ -1,6 +1,6 @@
 {
   "name": "data_structures",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "random datastructures",
   "main": "index.js",
   "scripts": {
