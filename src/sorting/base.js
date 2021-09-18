@@ -10,4 +10,10 @@ module.exports = class SortBase {
   getItems() {
     return this.items;
   }
+
+  swap(i, j) {
+    const tmp = this.items[i];
+    this.items[i] = this.items[j];
+    this.items[j] = tmp;
+  }
 };

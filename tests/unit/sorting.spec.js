@@ -25,85 +25,85 @@ const runSortingTest = (sortingObject, array, expectedArray) => {
 describe('Sorting tests', () => {
   context('Bubble sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new BubbleSort(), items, expectedOutput);
+      runSortingTest(new BubbleSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new BubbleSort(), dItems, dExpectedOutput);
+      runSortingTest(new BubbleSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new BubbleSort(), aItems, aExpectedOutput);
+      runSortingTest(new BubbleSort(), [...aItems], aExpectedOutput);
     });
   });
 
   context('Insertion sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new InsertionSort(), items, expectedOutput);
+      runSortingTest(new InsertionSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new InsertionSort(), dItems, dExpectedOutput);
+      runSortingTest(new InsertionSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new InsertionSort(), aItems, aExpectedOutput);
+      runSortingTest(new InsertionSort(), [...aItems], aExpectedOutput);
     });
   });
 
   context('Selection sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new SelectionSort(), items, expectedOutput);
+      runSortingTest(new SelectionSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new SelectionSort(), dItems, dExpectedOutput);
+      runSortingTest(new SelectionSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new SelectionSort(), aItems, aExpectedOutput);
+      runSortingTest(new SelectionSort(), [...aItems], aExpectedOutput);
     });
   });
 
   context('Merge sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new MergeSort(), items, expectedOutput);
+      runSortingTest(new MergeSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new MergeSort(), dItems, dExpectedOutput);
+      runSortingTest(new MergeSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new MergeSort(), aItems, aExpectedOutput);
+      runSortingTest(new MergeSort(), [...aItems], aExpectedOutput);
     });
   });
 
   context('Quick sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new QuickSort(), items, expectedOutput);
+      runSortingTest(new QuickSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new QuickSort(), dItems, dExpectedOutput);
+      runSortingTest(new QuickSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new QuickSort(), aItems, aExpectedOutput);
+      runSortingTest(new QuickSort(), [...aItems], aExpectedOutput);
     });
   });
 
   context('Heap sort', () => {
     it('Should sort the items correctly', () => {
-      runSortingTest(new HeapSort(), items, expectedOutput);
+      runSortingTest(new HeapSort(), [...items], expectedOutput);
     });
 
     it('Should sort the descending ordered items correctly', () => {
-      runSortingTest(new HeapSort(), dItems, dExpectedOutput);
+      runSortingTest(new HeapSort(), [...dItems], dExpectedOutput);
     });
 
     it('Should not change the ascending ordered items', () => {
-      runSortingTest(new HeapSort(), aItems, aExpectedOutput);
+      runSortingTest(new HeapSort(), [...aItems], aExpectedOutput);
     });
   });
 });

@@ -6,28 +6,38 @@ module.exports = class MergeSort extends SortBase {
   }
 
   mergeSort(startingIndex, endingIndex) {
-    if (endingIndex > startingIndex) {
-      const middleIndex = Math.floor((startingIndex + endingIndex) / 2);
+    const middleIndex = Math.floor((startingIndex + endingIndex) / 2);
+    if (endingIndex - startingIndex > 1) {
       this.mergeSort(startingIndex, middleIndex);
-      this.mergeSort(middleIndex + 1, endingIndex);
-      this.merge(startingIndex, middleIndex, endingIndex);
+      this.mergeSort(middleIndex, endingIndex);
     }
+    this.merge(startingIndex, middleIndex, endingIndex);
   }
 
   merge(start, middle, end) {
-    const leftArray = this.items.slice(start, middle);
-    const rightArray = this.items.slice(middle, end + 1);
+    let midPoint = middle;
+    if (start === midPoint) { midPoint += 1; }
+    const leftArray = this.items.slice(start, midPoint);
+    const rightArray = this.items.slice(midPoint, end + 1);
 
-    let l = 0;
-    let r = 0;
-    for (let i = start; i <= end; i += 1) {
-      if (r === rightArray.length || (l < leftArray.length && leftArray[l] < rightArray[r])) {
-        this.items[i] = leftArray[l];
-        l += 1;
+    let i = start;
+    while (leftArray.length && rightArray.length) {
+      if (leftArray[0] < rightArray[0]) {
+        this.items[i] = leftArray.shift();
       } else {
-        this.items[i] = rightArray[r];
-        r += 1;
+        this.items[i] = rightArray.shift();
       }
+      i += 1;
+    }
+
+    while (leftArray.length) {
+      this.items[i] = leftArray.shift();
+      i += 1;
+    }
+
+    while (rightArray.length) {
+      this.items[i] = rightArray.shift();
+      i += 1;
     }
   }
 };
