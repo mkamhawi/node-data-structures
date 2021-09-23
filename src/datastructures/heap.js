@@ -4,13 +4,13 @@ module.exports = class Heap {
     this.isMinHeap = isMinHeap;
   }
 
-  pushToHeap(item) {
+  enqueue(item) {
     const i = this.heap.length;
     this.heap[i] = item;
     this.balanceChildPlacement(i);
   }
 
-  pullHeapRoot() {
+  dequeue() {
     if (this.isEmpty()) return undefined;
     const root = this.heap.shift();
     const lastLeaf = this.heap.pop();

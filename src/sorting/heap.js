@@ -4,7 +4,7 @@ const Heap = require('../datastructures/heap');
 module.exports = class HeapSort extends SortBase {
   constructor() {
     super();
-    this.heap = new Heap();
+    this.heap = new Heap(false);
   }
 
   sort() {
@@ -14,12 +14,12 @@ module.exports = class HeapSort extends SortBase {
   }
 
   buildTheHeap() {
-    this.items.forEach((item) => this.heap.pushToHeap(item));
+    this.items.forEach((item) => this.heap.enqueue(item));
   }
 
   heapSort() {
     if (this.heap.isEmpty()) return;
-    this.items.splice(0, 0, this.heap.pullHeapRoot());
+    this.items.splice(0, 0, this.heap.dequeue());
     this.heapSort();
   }
 };
